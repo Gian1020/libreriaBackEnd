@@ -33,14 +33,11 @@ public class AutoriService {
             if (autoreDaInserire.getCognome()!=null && !autoreDaInserire.getCognome().isEmpty()){
                 autoreDaSalvare.setCognome(autoreDaInserire.getCognome());
             }
-            if (autoreDaInserire.getDataNascita()!=null){
+            if (autoreDaInserire.getDataNascita()!=null) {
                 autoreDaSalvare.setDataNascita(autoreDaInserire.getDataNascita());
-                if(autoreDaInserire.getDataMorte()!=null && dateCoerenti(autoreDaInserire.getDataNascita(), autoreDaInserire.getDataMorte())){
+                if (autoreDaInserire.getDataMorte() != null && dateCoerenti(autoreDaInserire.getDataNascita(), autoreDaInserire.getDataMorte())) {
                     autoreDaSalvare.setDataMorte(autoreDaInserire.getDataMorte());
                 } else autoreDaSalvare.setDataMorte(null);
-            }
-            else {
-                autoreDaSalvare.setDataNascita(null);
             }
             if(autoreDaInserire.getNazionalita()!=null && !autoreDaInserire.getNazionalita().isEmpty()){
                 autoreDaSalvare.setNazionalita(autoreDaInserire.getNazionalita());

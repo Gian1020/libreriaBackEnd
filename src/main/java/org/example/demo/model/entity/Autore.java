@@ -23,6 +23,7 @@ public class Autore {
     @Column(name = "cognome")
     private String cognome;
 
+    @NotNull
     @Column(name = "data_nascita")
     private LocalDate dataNascita;
 
