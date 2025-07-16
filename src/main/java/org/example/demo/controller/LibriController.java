@@ -48,7 +48,7 @@ public class LibriController {
     }
 
     @PostMapping(value = "/aggiungiLibro")
-    public ResponseEntity<?> aggiungiLibro(@ModelAttribute LibroAggiungiDto libro) /* TODO Rinserire @RequestBody*/ {
+    public ResponseEntity<?> aggiungiLibro(@RequestBody LibroAggiungiDto libro) {
         try {
             Libro libroInserito = libriService.aggiungiLibro(libro);
             return new ResponseEntity<>(libroInserito, HttpStatus.CREATED);

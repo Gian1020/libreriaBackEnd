@@ -9,5 +9,5 @@ public interface CasaEditriceRepository extends JpaRepository<CasaEditrice, Inte
 
     @Query("FROM CasaEditrice ce WHERE idCasaEditrice = :idCasaEditrice ")
 
-    CasaEditrice findByIdCasaEditrice(Integer idCasaEditrice);
+    public CasaEditrice findByIdCasaEditrice(Integer idCasaEditrice);
 }
