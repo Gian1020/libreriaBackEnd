@@ -3,8 +3,10 @@ package org.example.demo.service;
 import org.example.demo.model.dto.LibroAggiungiDto;
 import org.example.demo.model.dto.LibroDettaglioDto;
 import org.example.demo.model.dto.LibroDisponibileDto;
+import org.example.demo.model.entity.Autore;
 import org.example.demo.model.entity.CopiaLibro;
 import org.example.demo.model.entity.Libro;
+import org.example.demo.repository.AutoriRepository;
 import org.example.demo.repository.LibriRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +19,8 @@ public class LibriService {
     @Autowired
     private LibriRepository libriRepository;
 
+    @Autowired
+    private AutoriRepository autoriRepository;
 
     public List<Libro> listaLibri() {
         List<Libro> response = libriRepository.findAll();
@@ -63,6 +67,21 @@ public class LibriService {
         if (libro.getAnnoPubblicazione() != null) {
             libroDaAggiungere.setAnnoPubblicazione(libro.getAnnoPubblicazione());
         }
+
+        if (libro.getNomeAutore()!=null && !libro.getNomeAutore().isEmpty()) {
+            if (libro.getCognomeAutore()!=null && !libro.getCognomeAutore().isEmpty()){
+            Autore autore= autoriRepository.autoreFindByNomeCognome(libro.getNomeAutore(),libro.getCognomeAutore());
+            libroDaAggiungere.setAutore(autore);
+        }
+        else{
+            Autore autore = autoriRepository.autoreFindByNome(libro.getNomeAutore());
+            libroDaAggiungere.setAutore(autore);
+        }
+        }
+        else{
+            libroDaAggiungere.setAutore(null);
+        }
+
         libriRepository.save(libroDaAggiungere);
         return libroDaAggiungere;
     }

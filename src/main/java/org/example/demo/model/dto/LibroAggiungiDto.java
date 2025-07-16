@@ -7,6 +7,10 @@ public class LibroAggiungiDto {
 
     private Integer annoPubblicazione;
 
+    private String nomeAutore;
+
+    private String cognomeAutore;
+
     public Integer getAnnoPubblicazione() {
         return annoPubblicazione;
     }
@@ -31,10 +35,34 @@ public class LibroAggiungiDto {
         this.genere = genere;
     }
 
+    public String getCognomeAutore() {
+        return cognomeAutore;
+    }
+
+    public void setCognomeAutore(String cognomeAutore) {
+        this.cognomeAutore = cognomeAutore;
+    }
+
+    public String getNomeAutore() {
+        return nomeAutore;
+    }
+
+    public void setNomeAutore(String nomeAutore) {
+        this.nomeAutore = nomeAutore;
+    }
+
     public LibroAggiungiDto(String titolo, String genere, Integer annoPubblicazione) {
         this.titolo = titolo;
         this.genere = genere;
         this.annoPubblicazione = annoPubblicazione;
+    }
+
+    public LibroAggiungiDto(String titolo, String genere, Integer annoPubblicazione, String nomeAutore, String cognomeAutore) {
+        this.titolo = titolo;
+        this.genere = genere;
+        this.annoPubblicazione = annoPubblicazione;
+        this.nomeAutore = nomeAutore;
+        this.cognomeAutore = cognomeAutore;
     }
 
     public LibroAggiungiDto() {
