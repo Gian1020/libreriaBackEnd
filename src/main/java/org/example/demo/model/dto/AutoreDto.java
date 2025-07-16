@@ -1,44 +1,17 @@
-package org.example.demo.model.entity;
+package org.example.demo.model.dto;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
+import jakarta.persistence.Column;
 
 import java.time.LocalDate;
 import java.util.Date;
 
-@Entity
-@Table(name = "autore")
-public class Autore {
+public class AutoreDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_autore")
-    private Integer idAutore;
-
-    @NotNull
-    @Column(name = "nome")
     private String nome;
-
-    @NotNull
-    @Column(name = "cognome")
     private String cognome;
-
-    @Column(name = "data_nascita")
     private LocalDate dataNascita;
-
-    @Column(name = "data_morte")
     private LocalDate dataMorte;
-
-    @Column(name = "nazionalita")
     private String nazionalita;
-
-    public Integer getIdAutore() {
-        return idAutore;
-    }
-
-    public void setIdAutore(Integer idAutore) {
-        this.idAutore = idAutore;
-    }
 
     public String getNome() {
         return nome;
@@ -80,14 +53,14 @@ public class Autore {
         this.nazionalita = nazionalita;
     }
 
-    public Autore(String cognome, LocalDate dataNascita, LocalDate dataMorte, String nazionalita, String nome) {
+    public AutoreDto(String nome, String cognome, LocalDate dataNascita, LocalDate dataMorte, String nazionalita) {
+        this.nome = nome;
         this.cognome = cognome;
         this.dataNascita = dataNascita;
         this.dataMorte = dataMorte;
         this.nazionalita = nazionalita;
-        this.nome = nome;
     }
 
-    public Autore() {
+    public AutoreDto() {
     }
 }
